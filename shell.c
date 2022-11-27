@@ -241,7 +241,7 @@ int find_fullpath( command_t* p_cmd ) {
             break;
         }
         token = strtok_r(NULL, ":", &saveptr);
-    }*/
+    }
 
     if (found) {
         fullpath = (char*)malloc(sizeof(char) * (strlen(path) + 1));
@@ -250,7 +250,7 @@ int find_fullpath( command_t* p_cmd ) {
         p_cmd->argv[0] = fullpath;
     }
 
-    free(path);
+    free(path);*/
 
     return found;
 
