@@ -210,11 +210,11 @@ int find_fullpath( command_t* p_cmd ) {
     int found = 0;
   
     copy = (char *)malloc(strlen(env) + 1);
-    printf("%s\n", env);
+    //printf("%s\n", env);
     strcpy(copy, env);
     token = strtok(copy, ":");    
     while (token != NULL) {
-        puts(token);
+        //puts(token);
         path = (char*)malloc(sizeof(char) * (strlen(token) + strlen(p_cmd->argv[0]) + 2));
         strcpy(path, token);
         strcat(path, "/");
@@ -225,28 +225,7 @@ int find_fullpath( command_t* p_cmd ) {
         }
         token = strtok(0, ":");
     }
-    free(copy);
-    copy = NULL;
-
-    /*printf("%s\n", getenv( "PATH" ));
-    for (char *p = strtok(path_env_variable,":"); p != NULL; p = strtok(NULL, ":")) {
-        printf("%s\n", p);
-    }*/
     
-    /*token = strtok_r(path_env_variable, ":", &saveptr);
-    while (token != NULL) {
-        printf("%s\n", token);
-        path = (char*)malloc(sizeof(char) * (strlen(token) + strlen(p_cmd->argv[0]) + 2));
-        strcpy(path, token);
-        strcat(path, "/");
-        strcat(path, p_cmd->argv[0]);
-        if (stat(path, &buff) == 0) {
-            found = 1;
-            break;
-        }
-        token = strtok_r(NULL, ":", &saveptr);
-    }
-
     if (found) {
         fullpath = (char*)malloc(sizeof(char) * (strlen(path) + 1));
         strcpy(fullpath, path);
@@ -254,14 +233,10 @@ int find_fullpath( command_t* p_cmd ) {
         p_cmd->argv[0] = fullpath;
     }
 
-    free(path);*/
+    free(path);
+    free(copy);
 
     return found;
-
-    // TODO: COMPLETE YOUR CODE HERE.
-
-
-    return 0; // temporary place holder
 
 } // end find_fullpath function
 
