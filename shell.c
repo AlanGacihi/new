@@ -210,6 +210,7 @@ int find_fullpath( command_t* p_cmd ) {
     int found = 0;
   
     copy = (char *)malloc(strlen(env) + 1);
+    printf("%s\n", env);
     strcpy(copy, env);
     token = strtok(copy, ":");    
     while (token != NULL) {
@@ -224,7 +225,6 @@ int find_fullpath( command_t* p_cmd ) {
         }
         token = strtok(0, ":");
     }
-    
     free(copy);
     copy = NULL;
 
