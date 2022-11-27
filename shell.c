@@ -209,7 +209,7 @@ int find_fullpath( command_t* p_cmd ) {
     struct stat buff;
     int found = 0;
 
-    printf("%s\n", path_env_variable);
+    printf("%s\n", getenv( "PATH" ));
     for (char *p = strtok(path_env_variable,":"); p != NULL; p = strtok(NULL, ":")) {
         printf("%s\n", p);
     }
