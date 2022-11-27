@@ -200,7 +200,7 @@ void parse(char* line, command_t* p_cmd) {
  *
  */
 int find_fullpath( command_t* p_cmd ) {
-    const char* path_env_variable;
+    char* path_env_variable;
     path_env_variable = getenv( "PATH" );
     char* token = NULL;
     char* saveptr = NULL;
