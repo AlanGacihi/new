@@ -209,8 +209,8 @@ int find_fullpath( command_t* p_cmd ) {
     struct stat buff;
     int found = 0;
 
-    for (char *p = strtok(s,":"); p != NULL; p = strtok(NULL, " ")) {
-        printf("%s\n", token);
+    for (char *p = strtok(path_env_variable,":"); p != NULL; p = strtok(NULL, ":")) {
+        printf("%s\n", p);
     }
     
     /*token = strtok_r(path_env_variable, ":", &saveptr);
