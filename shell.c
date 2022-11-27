@@ -215,6 +215,7 @@ int find_fullpath( command_t* p_cmd ) {
         strcpy(path, token);
         strcat(path, "/");
         strcat(path, p_cmd->argv[0]);
+        printf("%s\n", path);
         if (stat(path, &buff) == 0) {
             found = 1;
             break;
