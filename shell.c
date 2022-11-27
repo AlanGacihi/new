@@ -204,7 +204,7 @@ int find_fullpath( command_t* p_cmd ) {
     path_env_variable = getenv( "PATH" );
     //char* token = NULL;
     char* saveptr = NULL;
-    char* path = NULL;
+    //char* path = NULL;
     char* fullpath = NULL;
     struct stat buff;
     int found = 0;
