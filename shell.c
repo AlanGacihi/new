@@ -200,25 +200,29 @@ void parse(char* line, command_t* p_cmd) {
  *
  */
 int find_fullpath( command_t* p_cmd ) {
-    char* path_env_variable;
-    path_env_variable = getenv( "PATH" );
-    //char* token = NULL;
+    const char *env = getenv("PATH");
+    char* token = NULL;
     char* saveptr = NULL;
-    //char* path = NULL;
+    char *copy = NULL;
+    char* path = NULL;
     char* fullpath = NULL;
     struct stat buff;
     int found = 0;
-
-    char *token;
-    const char *path = getenv("PATH");
-    
-    char *copy = (char *)malloc(strlen(path) + 1);
-    strcpy(copy, path);
-    token = strtok(copy, ":");
-    puts(token);
-    
-    while (token = strtok(0, ":")) {
+  
+    copy = (char *)malloc(strlen(env) + 1);
+    strcpy(copy, env);
+    token = strtok(copy, ":");    
+    while (token != NULL) {
         puts(token);
+        path = (char*)malloc(sizeof(char) * (strlen(token) + strlen(p_cmd->argv[0]) + 2));
+        strcpy(path, token);
+        strcat(path, "/");
+        strcat(path, p_cmd->argv[0]);
+        if (stat(path, &buff) == 0) {
+            found = 1;
+            break;
+        }
+        token = strtok(0, ":");
     }
     
     free(copy);
