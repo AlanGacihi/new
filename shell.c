@@ -209,7 +209,11 @@ int find_fullpath( command_t* p_cmd ) {
     struct stat buff;
     int found = 0;
 
-    token = strtok_r(path_env_variable, ":", &saveptr);
+    for (char *p = strtok(s,":"); p != NULL; p = strtok(NULL, " ")) {
+        printf("%s\n", token);
+    }
+    
+    /*token = strtok_r(path_env_variable, ":", &saveptr);
     while (token != NULL) {
         printf("%s\n", token);
         path = (char*)malloc(sizeof(char) * (strlen(token) + strlen(p_cmd->argv[0]) + 2));
@@ -221,7 +225,7 @@ int find_fullpath( command_t* p_cmd ) {
             break;
         }
         token = strtok_r(NULL, ":", &saveptr);
-    }
+    }*/
 
     if (found) {
         fullpath = (char*)malloc(sizeof(char) * (strlen(path) + 1));
